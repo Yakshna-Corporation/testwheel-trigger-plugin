@@ -2,36 +2,45 @@
 
 ## Introduction
 
-The [TestWheel](https://www.testwheel.com/) Automation Plugin is a powerful plugin designed to integrate seamlessly with DevOps tools for continuous integration and deployment (CI/CD). This plugin automates the execution of TestWheel's comprehensive testing frameworks within your CI/CD pipelines post-deployment, ensuring reliable testing throughout your development lifecycle.
+The [TestWheel](https://www.testwheel.com/) Automation Plugin is a powerful plugin designed to integrate seamlessly with DevOps tools for continuous integration and deployment (CI/CD). This plugin automates the execution of TestWheel’s comprehensive testing frameworks within your CI/CD pipelines post-deployment, ensuring reliable testing throughout your development lifecycle.
 
 ## Getting Started
 
-To get started with the TestWheel Automation Plugin, simply install the plugin from the Jenkins Marketplace and ensure you integrate the plugin with your CI/CD pipeline.
+To get started with the **TestWheel Automation Plugin**:
+
+1. Install the plugin from the Jenkins Marketplace.  
+2. Integrate it with your CI/CD pipeline.
 
 ## Prerequisites
 
-To effectively utilize the TestWheel Automation Plugin, please ensure you have the following:
+Before using the TestWheel Automation Plugin, ensure the following:
 
-- An existing Jenkins CI Server.
-- A required TestWheel account for a seamless automation process. [Register](https://app.testwheel.com/registration) or [Login](https://app.testwheel.com/login) with TestWheel using the mentioned link.
-- Ensure you have registered your application in TestWheel and obtained the Secure `ApiKey` & `PrjctKey` for the application to perform post-deployment test automation using the plugin.
+- You have an existing Jenkins CI server.  
+- You have a registered TestWheel account. [Register](https://app.testwheel.com/registration) or [Login](https://app.testwheel.com/login).  
+- Your application is registered in TestWheel, and you’ve obtained the following credentials:
+  - **Secure ApiKey**
+  - **PrjctKey**
+
+These credentials are required to perform post-deployment test automation using the plugin.
 
 ## Installation and Setup
 
-1. Go to the Jenkins Marketplace running by default locally.
-2. Open the **Manage Jenkins** page and click **Manage Plugins**.
-3. On the Plugin Manager page, click **Available Plugins**.
-4. Search for **TestWheel Automation Plugin** and install it.
-5. After successful installation, ensure you have logged in with TestWheel Automation.
-6. Create a new task in your CI/CD pipeline and provide the application's `ApiKey` & `PrjctKey` obtained from the web portal to trigger the test.
+1. Navigate to **Manage Jenkins → Manage Plugins**.  
+2. Go to the **Available Plugins** tab.  
+3. Search for **TestWheel Automation Plugin** and install it.  
+4. After installation, ensure you're logged into your TestWheel account within Jenkins.  
 
-### Sample Jenkins Pipeline Script
+You can integrate the plugin into your pipeline in two ways:
 
-Below is a sample pipeline script demonstrating how to use the **TestWheel Automation Plugin**.  
+---
 
-> **Note:**  
-> - Replace `<YOUR_STAGE_NAME>`, `<YOUR_API_KEY>`, and `<YOUR_PROJECT_KEY>` with the actual values.  
-> - The stage name is user-defined and can be customized as per your CI/CD workflow.
+## Usage
+
+### **Option 1: Using a Jenkins Pipeline Script**
+
+You can define a task in your CI/CD pipeline using the sample script below:
+
+> 🔧 **Note:** Replace `<YOUR_STAGE_NAME>`, `<YOUR_API_KEY>`, and `<YOUR_PROJECT_KEY>` with your actual values.
 
 ```groovy
 pipeline {
@@ -45,11 +54,33 @@ pipeline {
     }
 }
 ```
+This approach is recommended for teams using declarative pipelines and version-controlled Jenkinsfiles.
+
+### **Option 2: Using the Jenkins UI (Freestyle Project)**
+
+For **Freestyle Jenkins Jobs**:
+
+1. Go to your Jenkins job configuration.  
+2. Click **Add build step**.  
+3. Select **TestWheelTrigger** from the dropdown list.  
+4. Enter your **ApiKey** and **PrjctKey** obtained from TestWheel.  
+
+This option is ideal for users who prefer Jenkins’ UI over code-based pipeline configuration.
+
+---
 
 ## Build and Test
 
-To execute tests in your CI/CD pipeline post-deployment stage, integrate the Application ApiKey & PrjctKey into your DevOps tool. This integration will trigger the tests and generate a report. If the application passes the tests, the pipeline will proceed to the next stage. Conversely, if the application fails, the pipeline will terminate at that point.
+Once integrated:
+
+- Upon reaching the **post-deployment** stage, the plugin automatically triggers tests using the provided credentials.  
+- A test report will be generated:  
+  - ✅ If tests pass — the pipeline proceeds to the next stage.  
+  - ❌ If tests fail — the pipeline halts immediately to prevent faulty deployments.
+
+---
 
 ## Contribute
 
-TestWheel accepts feedback, whether positive or negative. Users can submit their concerns through the [Contact Us](https://app.testwheel.com/contact-us) link.
+We welcome feedback, suggestions, and bug reports.  
+Please use the [Contact Us](https://app.testwheel.com/contact-us) page on our website to reach out.
