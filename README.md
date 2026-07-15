@@ -1,25 +1,41 @@
-# TestWheel Automation Plugin
+# TestWheel Automation Plugin for Jenkins
 
 ## Introduction
 
-The [TestWheel](https://www.testwheel.com/) Automation Plugin is a powerful plugin designed to integrate seamlessly with DevOps tools for continuous integration and deployment (CI/CD). This plugin automates the execution of TestWheel’s comprehensive testing frameworks within your CI/CD pipelines post-deployment, ensuring reliable testing throughout your development lifecycle.
+The TestWheel Automation Plugin connects [TestWheel](https://testwheel.com) an AI-powered, no-code test automation platform for web and API directly into your Jenkins pipelines. It's built as part of TestWheel's broader [DevOps integration suite](https://www.testwheel.com/devops-integrations), which also supports Azure DevOps and JIRA, so teams can run functional and regression checks automatically the moment a build is deployed, instead of waiting on a manual QA cycle.
 
-## Getting Started
+Because the plugin triggers real test execution against your deployed application, a failed run stops the pipeline before a broken build reaches users, turning "deploy and hope" into "deploy and verify."
 
-To get started with the **TestWheel Automation Plugin**:
+## Why Automate Post-Deployment Testing?
+
+Manual smoke-testing after every deployment doesn't scale, and it's the step most teams quietly skip under release pressure. Wiring TestWheel into Jenkins closes that gap:
+
+- **Consistency** - The same test suite runs the same way on every build, removing tester-to-tester variance.
+- **Speed** - Tests kick off automatically post-deployment, with no one needing to remember to trigger them.
+- **Early Detection** - Regressions surface within minutes of a release instead of days later in a bug report.
+- **Audit Trail** - Every pipeline run produces a test report you can attach to a release or a compliance review.
+
+This pattern is the same one TestWheel uses in production environments with strict release governance which including its work with U.S. Air Force and Department of Defense systems, where regression coverage and reporting for every change are a hard requirement, not a nice-to-have. See the [AFRISS-TF case study](https://www.testwheel.com/afriss-tf) for a real-world example of this at scale.
 
 1. Install the plugin from the Jenkins Marketplace.  
 2. Integrate it with your CI/CD pipeline.
 
+## How It Fits Into TestWheel
+
+TestWheel itself handles the actual test creation and execution logic, you can author tests with AI-generated natural-language steps, record-and-playback, or low-code builders across [web](https://www.testwheel.com/web-testing) and [API](https://www.testwheel.com/api-testing) surfaces. This plugin is the trigger mechanism: it tells your registered TestWheel project to run its configured test suite the moment your Jenkins pipeline reaches the post-deployment stage, then reports pass/fail back to Jenkins.
+
+If you're evaluating whether TestWheel is the right fit before wiring up CI/CD, the [How It Works](https://www.testwheel.com/how-it-works) page and [product sheet](https://www.testwheel.com/product-sheet) walk through the platform end to end, and the [FAQ](https://www.testwheel.com/faq/) covers common setup questions.
+
 ## Prerequisites
 
-Before using the TestWheel Automation Plugin, ensure the following:
+What you need before installing TestWheel plugin:
 
-- You have an existing Jenkins CI server.  
-- You have a registered TestWheel account. [Register](https://app.testwheel.com/registration) or [Login](https://app.testwheel.com/login).  
-- Your application is registered in TestWheel, and you’ve obtained the following credentials:
-  - **Secure ApiKey**
-  - **PrjctKey**
+- A Jenkins server, self-hosted or cloud, already up and running.  
+- A TestWheel account. [Register](https://app.testwheel.com/registration) if you don't have one, or [Login](https://app.testwheel.com/login) if you do.  
+- Your application already registered as a project inside TestWheel, with two credentials pulled from that project's settings:
+  
+  - **Secure ApiKey**: Authenticates the plugin against your TestWheel account.
+  - **PrjctKey**: Tells TestWheel which project, and which test suite, to run.
 
 These credentials are required to perform post-deployment test automation using the plugin.
 
