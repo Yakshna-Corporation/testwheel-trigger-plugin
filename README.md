@@ -39,14 +39,14 @@ What you need before installing TestWheel plugin:
 
 These credentials are required to perform post-deployment test automation using the plugin.
 
-## Installation and Setup
+## Installation and Setup the plugin
 
-1. Navigate to **Manage Jenkins → Manage Plugins**.  
-2. Go to the **Available Plugins** tab.  
+1. In Jenkins, go to **Manage Jenkins → Manage Plugins**.  
+2. Click into the **Available Plugins** tab.  
 3. Search for **TestWheel Automation Plugin** and install it.  
-4. After installation, ensure you're logged into your TestWheel account within Jenkins.  
+4. Restart Jenkins if it asks you to, then make sure you're actually logged into TestWheel within Jenkins before you try running anything..  
 
-You can integrate the plugin into your pipeline in two ways:
+From here you've got two ways to use it. It mostly comes down to how your team already manages Jenkins jobs.
 
 ---
 
@@ -84,7 +84,6 @@ For **Freestyle Jenkins Jobs**:
 This option is ideal for users who prefer Jenkins’ UI over code-based pipeline configuration.
 
 ---
-
 ## Build and Test
 
 Once integrated:
@@ -95,8 +94,42 @@ Once integrated:
   - ❌ If tests fail — the pipeline halts immediately to prevent faulty deployments.
 
 ---
+## A quick word on credentials
+
+Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. That's an easy way to leak it. Instead:
+
+- Store it as a Jenkins Credentials entry (Secret text) and pull it in with credentials('testwheel-api-key').
+- If the key ever ends up somewhere, it shouldn't, like building logs, a fork, or a shared repo, rotate it from your TestWheel project settings and move on.
+- Keep PrjctKey scoped to the actual application it belongs to. Pointing one project key at a different app pipeline just means you're testing the wrong thing without realizing it.
+
+---
+## When something's not working
+
+---
+## Questions people usually ask
+
+**Does the plugin create tests, or just run them?** Just runs them. Test creation, whether AI-generated, record-and-playback, or low-code, happens inside TestWheel itself, not here.
+
+**Can I use this for more than one application?** Yes, just add a separate stage per app, each with its own PrjctKey. One key maps to one project.
+
+**If tests fail, does it block the deploy or just warn me?** It blocks. The pipeline halts. If you'd rather it just flag issues without stopping anything, you'd need to move the stage after your deployment gate or adjust it to a non-blocking step yourself.
+
+**Is this just for web apps?** No. It depends what the TestWheel project behind it is set up to test. Could be [web](https://www.testwheel.com/web-testing), [API](https://www.testwheel.com/api-testing), [mobile](https://www.testwheel.com/mobile-testing), or [performance](https://www.testwheel.com/performance-testing).
+
+More in the general [TestWheel FAQ](https://www.testwheel.com/faq) if you're stuck on something else.
+
+---
+## Related TestWheel Resources
+-  [DevOps integrations](https://www.testwheel.com/devops-integrations): Jenkins, Azure DevOps, JIRA, all in one place
+-  [AI test automation](https://www.testwheel.com/ai-test-automation): Turning manual test cases into automated ones
+-  [Selenium to AI automation](https://www.testwheel.com/selenium-ai-automation): For teams migrating off an existing Selenium suite
+-  [How it works](https://www.testwheel.com/how-it-works): platform overview
+-  [Case studies](https://www.testwheel.com/case-studies): including the federal and government work mentioned above
+-  [Docs](https://docs.testwheel.com): full technical reference
+-  [Blog](https://www.testwheel.com/blog): testing and release engineering writing
+  
+---
 
 ## Contribute
 
-We welcome feedback, suggestions, and bug reports.  
-Please use the [Contact Us](https://app.testwheel.com/contact-us) page on our website to reach out.
+Found a bug, or have a suggestion? Use [Contact Us](https://app.testwheel.com/contact-us), or open an issue here if it's something reproducible.
