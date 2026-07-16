@@ -48,8 +48,6 @@ These credentials are required to perform post-deployment test automation using 
 
 From here you've got two ways to use it. It mostly comes down to how your team already manages Jenkins jobs.
 
----
-
 ## Usage
 
 ### **Option 1: Using a Jenkins Pipeline Script**
@@ -83,7 +81,6 @@ For **Freestyle Jenkins Jobs**:
 
 This option is ideal for users who prefer Jenkins’ UI over code-based pipeline configuration.
 
----
 ## Build and Test
 
 Once integrated:
@@ -93,7 +90,6 @@ Once integrated:
   - ✅ If tests pass — the pipeline proceeds to the next stage.  
   - ❌ If tests fail — the pipeline halts immediately to prevent faulty deployments.
 
----
 ## A quick word on credentials
 
 Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. That's an easy way to leak it. Instead:
@@ -102,7 +98,6 @@ Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. 
 - If the key ever ends up somewhere, it shouldn't, like building logs, a fork, or a shared repo, rotate it from your TestWheel project settings and move on.
 - Keep PrjctKey scoped to the actual application it belongs to. Pointing one project key at a different app pipeline just means you're testing the wrong thing without realizing it.
 
----
 ## When something's not working
 
 | What you're seeing | Usual cause | What to try |
@@ -113,7 +108,6 @@ Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. 
 | Runs fine but no report shows up | No test suite assigned to that project | Go assign one inside TestWheel |
 | Pipeline just hangs at this stage | Big suite, or the Jenkins agent can't reach TestWheel | Check outbound network access, or trim the suite down |
 
----
 ## Questions people usually ask
 
 **Does the plugin create tests, or just run them?** Just runs them. Test creation, whether AI-generated, record-and-playback, or low-code, happens inside TestWheel itself, not here.
@@ -126,7 +120,6 @@ Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. 
 
 More in the general [TestWheel FAQ](https://www.testwheel.com/faq) if you're stuck on something else.
 
----
 ## Related TestWheel Resources
 -  [DevOps integrations](https://www.testwheel.com/devops-integrations): Jenkins, Azure DevOps, JIRA, all in one place
 -  [AI test automation](https://www.testwheel.com/ai-test-automation): Turning manual test cases into automated ones
@@ -135,8 +128,6 @@ More in the general [TestWheel FAQ](https://www.testwheel.com/faq) if you're stu
 -  [Case studies](https://www.testwheel.com/case-studies): including the federal and government work mentioned above
 -  [Docs](https://docs.testwheel.com): full technical reference
 -  [Blog](https://www.testwheel.com/blog): testing and release engineering writing
-  
----
 
 ## Contribute
 
