@@ -1,7 +1,6 @@
 # TestWheel Automation Plugin for Jenkins
 
 ## Introduction
-
 The TestWheel Automation Plugin connects [TestWheel](https://testwheel.com) an AI-powered, no-code test automation platform for web and API directly into your Jenkins pipelines. It's built as part of TestWheel's broader [DevOps integration suite](https://www.testwheel.com/devops-integrations), which also supports Azure DevOps and JIRA, so teams can run functional and regression checks automatically the moment a build is deployed, instead of waiting on a manual QA cycle.
 
 Because the plugin triggers real test execution against your deployed application, a failed run stops the pipeline before a broken build reaches users, turning "deploy and hope" into "deploy and verify."
@@ -124,10 +123,10 @@ More in the general [TestWheel FAQ](https://www.testwheel.com/faq) if you're stu
 -  [DevOps integrations](https://www.testwheel.com/devops-integrations): Jenkins, Azure DevOps, JIRA, all in one place
 -  [AI test automation](https://www.testwheel.com/ai-test-automation): Turning manual test cases into automated ones
 -  [Selenium to AI automation](https://www.testwheel.com/selenium-ai-automation): For teams migrating off an existing Selenium suite
--  [How it works](https://www.testwheel.com/how-it-works): platform overview
--  [Case studies](https://www.testwheel.com/case-studies): including the federal and government work mentioned above
--  [Docs](https://docs.testwheel.com): full technical reference
--  [Blog](https://www.testwheel.com/blog): testing and release engineering writing
+-  [How it works](https://www.testwheel.com/how-it-works): Platform overview
+-  [Case studies](https://www.testwheel.com/case-studies): Including the federal and government work mentioned above
+-  [Docs](https://docs.testwheel.com): Full technical reference
+-  [Blog](https://www.testwheel.com/blog): Testing and release engineering writing
 
 ## Contribute
 
