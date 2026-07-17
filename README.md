@@ -103,7 +103,7 @@ Don't hardcode the apiKey into a Jenkinsfile that's sitting in version control. 
 | :--- | :--- | :--- |
 | Plugin step isn't showing up in the pipeline | Not installed, or Jenkins needs a restart | Reinstall via Manage Plugins, restart Jenkins |
 | Stage fails immediately | ApiKey is wrong or expired | Regenerate it in TestWheel, update the Jenkins credential |
-| "Project not found" | Wrong PrjctKey, or the app isn't registered in TestWheel yet | Check the project exists in your [TestWheel dashboard](https://app.testwheel.com/login) |
+| Project not found | Wrong PrjctKey, or the app isn't registered in TestWheel yet | Check the project exists in your [TestWheel dashboard](https://app.testwheel.com/login) |
 | Runs fine but no report shows up | No test suite assigned to that project | Go assign one inside TestWheel |
 | Pipeline just hangs at this stage | Big suite, or the Jenkins agent can't reach TestWheel | Check outbound network access, or trim the suite down |
 
